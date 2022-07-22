@@ -11,4 +11,4 @@ aliyun:
     accessKeySecret: Z0yA0eXj4WCufeup12jhrXokM3Mf55
     bucketName: 20201111
     endpoint: oss-cn-beijing.aliyuncs.com
-    avatarPath: avatar/
+    avatarPath: guLiXueYuan/avatar/
