@@ -2,7 +2,9 @@ package com.atguigu.commonutils;
 
 
 import com.atguigu.commonutils.ajaxResultDepende.StringUtils;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiResponses;
 
 import java.util.HashMap;
 
@@ -11,25 +13,27 @@ import java.util.HashMap;
  *
  * @author logistics
  */
+
+@ApiModel(value = "json响应对象", description = "返回格式封装")
 public class AjaxResult extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
     /**
      * 状态码
      */
-    @ApiModelProperty(value = "返回码")
+    @ApiModelProperty(value = "返回码",example = "200000")
     public static final String CODE_TAG = "code";
 
     /**
      * 返回内容
      */
-    @ApiModelProperty(value = "返回消息")
-    public static final String MSG_TAG = "msg";
+    @ApiModelProperty(value = "返回消息",example = "成功了")
+    public static final String MSG_TAG = "message";
 
     /**
      * 数据对象
      */
-    @ApiModelProperty(value = "返回数据")
+    @ApiModelProperty(value = "返回数据",example = "数据返回")
     public static final String DATA_TAG = "data";
 
     /**
@@ -39,7 +43,7 @@ public class AjaxResult extends HashMap<String, Object> {
         /**
          * 成功
          */
-        SUCCESS(200),
+        SUCCESS(20000),
         /**
          * 警告
          */

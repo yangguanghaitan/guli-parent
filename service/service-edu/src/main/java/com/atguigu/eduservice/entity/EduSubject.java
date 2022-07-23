@@ -1,12 +1,18 @@
 package com.atguigu.eduservice.entity;
 
+import com.atguigu.commonutils.tree.TreeNode;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,7 +31,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="EduSubject对象", description="课程科目")
-public class EduSubject implements Serializable {
+public class EduSubject implements TreeNode<String> {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,4 +57,31 @@ public class EduSubject implements Serializable {
     private Date gmtModified;
 
 
+    @TableField(exist=false)
+    private List<? extends TreeNode<String>> children=new ArrayList<>();
+
+    @Override
+    public String id() {
+        return id;
+    }
+
+    @Override
+    public String parentId() {
+        return parentId;
+    }
+
+    @Override
+    public boolean root() {
+        return Objects.equals("0",parentId);
+    }
+
+    @Override
+    public void setChildren(List<? extends TreeNode<String>> children) {
+           this.children=children;
+    }
+
+    @Override
+    public List<? extends TreeNode<String>> getChildren() {
+        return this.children;
+    }
 }

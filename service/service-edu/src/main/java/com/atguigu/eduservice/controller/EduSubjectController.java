@@ -2,6 +2,7 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.AjaxResult;
+import com.atguigu.eduservice.entity.EduSubject;
 import com.atguigu.eduservice.service.EduSubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -38,6 +40,13 @@ public class EduSubjectController {
     public AjaxResult readSubjectExcelData(MultipartFile excelDataFile) throws IOException {
         subjectService.readSubjectExcelData(excelDataFile);
         return AjaxResult.success();
+    }
+    @ApiOperation("课程分类查询")
+    @RequestMapping(value = "listSubject", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxResult searchSubject() throws IOException {
+        List<EduSubject> oneSubjectsTree=subjectService.searchSubject();
+        return AjaxResult.success(oneSubjectsTree);
     }
 }
 

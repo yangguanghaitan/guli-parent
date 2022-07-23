@@ -7,8 +7,8 @@ spring:
     active: dev
 aliyun:
   oss:
-    accessKeyId: LTAI5tGMV1jdMJQWrAUvMyMt
-    accessKeySecret: Z0yA0eXj4WCufeup12jhrXokM3Mf55
+    accessKeyId: LTAI4Fvi9tZzMyD73JGCFTYK
+    accessKeySecret: xr9u8fCaxon9RCDW22MsBcXpNHICWm
     bucketName: 20201111
     endpoint: oss-cn-beijing.aliyuncs.com
     avatarPath: guLiXueYuan/avatar/
