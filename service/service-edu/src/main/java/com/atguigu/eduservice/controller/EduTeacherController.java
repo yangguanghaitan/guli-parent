@@ -29,7 +29,8 @@ import java.util.Map;
  */
 @Api(description = "讲师模块")
 @Controller
-@RequestMapping("/eduservice/teacher")
+@RequestMapping("/eduService/teacher")
+@CrossOrigin()
 public class EduTeacherController {
 
     @Autowired
@@ -109,9 +110,10 @@ public class EduTeacherController {
             wrapper.ge("gmt_create", begin);//大于
         }
         if (!StringUtils.isEmpty(end)) {
-            wrapper.le("gmt_create", end);//小于
+            wrapper.le("gmt_modified", end);//小于
         }
 
+        wrapper.orderByDesc("gmt_create");
         eduTeacherService.page(teacherPage, wrapper);
 
         List<EduTeacher> records = teacherPage.getRecords();
